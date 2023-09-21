@@ -14,6 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_dead = false
 @export var hp = 10
 
+func _ready():
+	pass
 
 func _physics_process(delta):
 	#dead

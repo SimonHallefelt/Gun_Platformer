@@ -18,13 +18,11 @@ func _process(delta):
 	position += velocity * delta
 
 func _on_area_entered(area):
-	if area.get_name() == \"enemy_1_hitbox\":
-		print(\"area, hit \" + area.get_name())
-		#queue_free()
-	#pass
-	#body.is_in_group(\"mobs\"):
-	#	body.queue_free()
-	#queue_free()
+	print(area.is_in_group(\"enemies_group\"))
+	if area.is_in_group(\"enemies_group\"):
+		print(\"hit enemies_group: \" + area.get_owner().get_name())
+		area.get_owner().hp -= 2
+		queue_free()
 
 
 func _on_timer_timeout():
@@ -32,10 +30,7 @@ func _on_timer_timeout():
 
 
 func _on_body_entered(body):
-	print(\"body, hit \" + body.get_name())
-	if body.get_parent().get_name() == \"Enemys\":
-		body.hp -= 2
-		queue_free()
+	pass
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01huk"]

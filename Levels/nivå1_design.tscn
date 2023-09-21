@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b07gkadxxcg0o"]
 
 [ext_resource type="PackedScene" uid="uid://b7kxv5hnt1k7p" path="res://tile_map_1.tscn" id="1_uvqif"]
-[ext_resource type="PackedScene" uid="uid://bhuuq6rx2deim" path="res://Enemys/enemy_1.tscn" id="2_haqsv"]
+[ext_resource type="PackedScene" uid="uid://bhuuq6rx2deim" path="res://Enemys/enemy_basic.tscn" id="2_5a4gs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp46n"]
 size = Vector2(3680, 1095)
@@ -23,8 +23,8 @@ shape = SubResource("RectangleShape2D_yp46n")
 
 [node name="Enemys" type="Node2D" parent="."]
 
-[node name="Enemy_1" parent="Enemys" instance=ExtResource("2_haqsv")]
-position = Vector2(284, 392)
+[node name="Enemy_1" parent="Enemys" instance=ExtResource("2_5a4gs")]
+position = Vector2(620, 521)
 
-[node name="Enemy_2" parent="Enemys" instance=ExtResource("2_haqsv")]
-position = Vector2(627, 528)
+[node name="Enemy_2" parent="Enemys" instance=ExtResource("2_5a4gs")]
+position = Vector2(281, 394)

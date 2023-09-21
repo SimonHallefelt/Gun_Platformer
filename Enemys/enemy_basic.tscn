@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bhuuq6rx2deim"]
 
-[ext_resource type="Script" path="res://Enemys/enemy_1.gd" id="1_i2ydl"]
-[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="2_mkx7c"]
+[ext_resource type="Script" path="res://Enemys/enemy_basic.gd" id="1_pqrwr"]
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="2_io6jc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i2py"]
 size = Vector2(112, 114)
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_mkx7c")]
+"values": [ExtResource("2_io6jc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_mkx7c"), ExtResource("2_mkx7c")]
+"values": [ExtResource("2_io6jc"), ExtResource("2_io6jc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_mkx7c"), ExtResource("2_mkx7c"), ExtResource("2_mkx7c")]
+"values": [ExtResource("2_io6jc"), ExtResource("2_io6jc"), ExtResource("2_io6jc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -103,9 +103,9 @@ size = Vector2(112, 114)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w4sgy"]
 size = Vector2(1450, 35)
 
-[node name="Enemy_1" type="CharacterBody2D"]
+[node name="Enemy_1" type="CharacterBody2D" groups=["enemies_group"]]
 scale = Vector2(0.5, 0.5)
-script = ExtResource("1_i2ydl")
+script = ExtResource("1_pqrwr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -57)
@@ -113,7 +113,7 @@ shape = SubResource("RectangleShape2D_8i2py")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.713726, 0, 0.654902, 1)
-texture = ExtResource("2_mkx7c")
+texture = ExtResource("2_io6jc")
 offset = Vector2(0, -64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -122,7 +122,7 @@ libraries = {
 "": SubResource("AnimationLibrary_214ct")
 }
 
-[node name="enemy_1_hitbox" type="Area2D" parent="."]
+[node name="enemy_1_hitbox" type="Area2D" parent="." groups=["enemies_group"]]
 visible = false
 position = Vector2(0, -58)
 

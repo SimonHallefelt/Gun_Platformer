@@ -6,7 +6,7 @@ var direction
 @export var JUMP_VELOCITY = -400.0
 @export var spring_SPEED = SPEED * 1.8
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
 #shoot
 var Bullet = load("res://bulet.tscn")
@@ -17,17 +17,14 @@ var can_shoot = true
 @onready var ANI = get_node("AnimationPlayer")
 
 
-func _on_ready():
-	pass
-	#ANI.play("idel")
-
+func _ready():
+	#start animation
+	ANI.set_current_animation("idel")
 
 func _physics_process(delta):
-	
-	ANI.play("idel")
 	# Add the gravity.
 	if not is_on_floor():
-		velocity.y += gravity * delta * 2
+		velocity.y += gravity * delta
 
 	# Handle Jump.
 	if Input.is_action_pressed("up") and is_on_floor():

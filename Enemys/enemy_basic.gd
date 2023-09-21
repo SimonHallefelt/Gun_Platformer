@@ -15,16 +15,14 @@ var is_dead = false
 @export var hp = 10
 
 func _ready():
-	pass
+	#start animation
+	ANI.set_current_animation("enemy_idel")
 
 func _physics_process(delta):
 	#dead
 	if hp <= 0:
 		dead()
 		return
-	
-	#animation
-	ANI.play("enemy_idel")
 	
 	#movment
 	if not is_on_floor():
@@ -34,7 +32,7 @@ func _physics_process(delta):
 
 func dead():
 	if !is_dead:
-		print("dead, " + str(self.get_name()) + " : " + str(ANI.get_current_animation()) + " .")
+		print("dead, " + str(self.get_name()) + " : " + str(ANI.get_current_animation()))
 		is_dead = true
 		$CollisionShape2D.disabled = true
 		$enemy_1_hitbox.monitoring = false
@@ -45,9 +43,7 @@ func dead():
 
 
 func _on_enemy_1_hitbox_area_entered(area):
-	if area.get_name() == "bullet":
-		print("hit by " + str(area.get_name()))
-		area.queue_free()
+	pass
 
 func _on_enemy_1_hitbox_area_exited(area):
 	pass

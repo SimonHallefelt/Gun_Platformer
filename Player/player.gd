@@ -9,7 +9,8 @@ var direction
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
 #shoot
-var Bullet = load("res://bulet.tscn")
+var current_weapon
+var Bullet
 var look = 1
 var can_shoot = true
 
@@ -24,6 +25,8 @@ var is_dead = false
 func _ready():
 	#start animation
 	ANI.set_current_animation("idel")
+	#start weapon
+	set_weapon("res://Weapons/Automatic/weapon_automatic.tscn")
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -53,22 +56,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("skjut"):
 		shoot(look)
 
-
 func shoot(direction):
-	Bullet = load("res://Player/player_bullet.tscn")
-	if can_shoot:
-		var b = Bullet.instantiate()
-		owner.add_child(b)
-		var p = position
-		p.y = p.y - 32
-		b.position = p
-		b.direction = direction
-		shoot_timer()
+	current_weapon.shoot(direction, "standard")
 
-func shoot_timer():
-	can_shoot = false
-	await get_tree().create_timer(0.1).timeout
-	can_shoot = true
+func set_weapon(weapon):
+	current_weapon = load(weapon).instantiate()
+	add_child(current_weapon)
+	var p = position
+	p.y = 0 - 32
+	p.x = 0
+	current_weapon.setPos(p)
 
 func damage(damage):
 	hp -= damage

@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://dncwo0iay2r4o"]
+
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="1_aqfb6"]
+
+[sub_resource type="GDScript" id="GDScript_6ih20"]
+script/source = "extends Area2D
+
+var speed = 1000
+var direction = 1
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	var velocity = Vector2()
+	velocity.x += direction * speed
+	position += velocity * delta
+
+func _on_area_entered(area):
+	if area.get_name() == \"enemy_1_hitbox\":
+		print(\"area, hit \" + area.get_name())
+		#queue_free()
+	#pass
+	#body.is_in_group(\"mobs\"):
+	#	body.queue_free()
+	#queue_free()
+
+
+func _on_timer_timeout():
+	queue_free()
+
+
+func _on_body_entered(body):
+	print(\"body, hit \" + body.get_name())
+	if body.get_parent().get_name() == \"Enemys\":
+		body.hp -= 2
+		queue_free()
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01huk"]
+radius = 310.0
+
+[node name="bullet" type="Area2D"]
+script = SubResource("GDScript_6ih20")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.1, 0.1)
+shape = SubResource("CircleShape2D_01huk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.196078, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_aqfb6")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

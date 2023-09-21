@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0tfhxuu7vmuc"]
+
+[ext_resource type="PackedScene" uid="uid://klaibhxdeflk" path="res://player.tscn" id="1_ykc2w"]
+[ext_resource type="PackedScene" uid="uid://b07gkadxxcg0o" path="res://nivå1_design.tscn" id="2_mou8w"]
+
+[node name="nivå1" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_ykc2w")]
+position = Vector2(150, 326)
+
+[node name="nivå1_design" parent="." instance=ExtResource("2_mou8w")]

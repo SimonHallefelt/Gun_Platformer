@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7kxv5hnt1k7p"]
+
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="1_hfijl"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xh1le"]
+texture = ExtResource("1_hfijl")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/modulate = Color(0, 1, 0, 1)
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_p83ll"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xh1le")
+
+[node name="TileMap" type="TileMap"]
+tile_set = SubResource("TileSet_p83ll")
+format = 2

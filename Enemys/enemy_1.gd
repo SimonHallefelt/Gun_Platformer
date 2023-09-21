@@ -11,17 +11,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var ANI = get_node("AnimationPlayer")
 
 #life
-var dead = false
+var is_dead = false
 @export var hp = 10
 
 
 func _physics_process(delta):
 	#dead
 	if hp <= 0:
-		if ANI.get_current_animation() != "enemy_dead" and !dead:
-			print("dead, " + str(self.get_name()) + " : " + str(ANI.get_current_animation()) + " .")
-			dead = true
-			ANI.set_current_animation("enemy_dead")
+		dead()
 		return
 	
 	#animation
@@ -33,18 +30,26 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+func dead():
+	if ANI.get_current_animation() != "enemy_dead" and !is_dead:
+		print("dead, " + str(self.get_name()) + " : " + str(ANI.get_current_animation()) + " .")
+		is_dead = true
+		ANI.set_current_animation("enemy_dead")
+
 
 func _on_enemy_1_hitbox_area_entered(area):
-	if area.get_name() == "bullet":
-		print("hit by " + str(area.get_name()))
-		area.queue_free()
+	if !dead:
+		if area.get_name() == "bullet":
+			print("hit by " + str(area.get_name()))
+			area.queue_free()
 
 func _on_enemy_1_hitbox_area_exited(area):
 	pass
 
 func _on_vision_area_entered(area):
-	if area.get_name() == "player_hitbox":
-		print("can se " + area.get_name())
+	if !dead:
+		if area.get_name() == "player_hitbox":
+			print("can se " + area.get_name())
 
 
 func _on_enemy_1_hitbox_body_entered(body):

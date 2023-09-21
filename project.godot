@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="1_timme_kör"
-run/main_scene="res://nivå1.tscn"
+config/name="GunPlatformer"
+run/main_scene="res://Levels/nivå1.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

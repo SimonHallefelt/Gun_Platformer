@@ -54,8 +54,9 @@ func _physics_process(delta):
 
 
 func shoot(direction):
-	Bullet = load("res://bulet.tscn")
+	Bullet = load("res://Player/player_bullet.tscn")
 	if can_shoot:
+
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		var p = position
@@ -75,5 +76,6 @@ func _on_player_hitbox_area_entered(area):
 
 
 func _on_player_hitbox_area_exited(area):
-	if area.get_name() == "Level":
-		get_tree().change_scene_to_file("res://nivå1.tscn")
+	if area.get_name() == "Level_area":
+		#get_tree().change_scene_to_file("res://nivå1.tscn")
+		get_tree().get_current_scene()

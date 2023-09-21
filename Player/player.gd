@@ -67,10 +67,17 @@ func set_weapon(weapon):
 
 func damage(damage):
 	hp -= damage
+	if hp <= 0:
+		dead()
 
+func dead():
+	print("player dead")
+	get_tree().reload_current_scene()
+
+
+#signals
 func _on_player_hitbox_area_entered(area):
 	pass # Replace with function body.
-
 
 func _on_player_hitbox_area_exited(area):
 	if area.get_name() == "Level_area":

@@ -15,7 +15,7 @@ func shoot(dir, bullet_typ, my_self):
 		else:
 			bullet = standard_bullet.instantiate()
 		self.get_parent().get_parent().add_child(bullet)
-		bullet.shoot(self.get_parent().position + position, dir, my_self)
+		bullet.shoot(self.get_parent().position + position, dir, my_self, speed)
 		can_shoot = false
 		$Timer.start()
 

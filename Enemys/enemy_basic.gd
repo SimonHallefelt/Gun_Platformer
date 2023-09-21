@@ -62,6 +62,8 @@ func set_weapon(weapon):
 	p.x = 0
 	current_weapon.setPos(p)
 
+
+#signals
 func _on_enemy_1_hitbox_area_entered(area):
 	pass
 
@@ -75,7 +77,6 @@ func _on_vision_area_entered(area):
 		if self.position > area.get_parent().position:
 			looking = -1
 		shoot()
-
 
 func _on_enemy_1_hitbox_body_entered(body):
 	pass # Replace with function body.

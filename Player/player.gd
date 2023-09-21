@@ -13,6 +13,10 @@ var Bullet = load("res://bulet.tscn")
 var look = 1
 var can_shoot = true
 
+#life
+var is_dead = false
+@export var hp = 10
+
 #animation
 @onready var ANI = get_node("AnimationPlayer")
 
@@ -53,7 +57,6 @@ func _physics_process(delta):
 func shoot(direction):
 	Bullet = load("res://Player/player_bullet.tscn")
 	if can_shoot:
-
 		var b = Bullet.instantiate()
 		owner.add_child(b)
 		var p = position
@@ -67,6 +70,8 @@ func shoot_timer():
 	await get_tree().create_timer(0.1).timeout
 	can_shoot = true
 
+func damage(damage):
+	hp -= damage
 
 func _on_player_hitbox_area_entered(area):
 	pass # Replace with function body.
@@ -74,5 +79,5 @@ func _on_player_hitbox_area_entered(area):
 
 func _on_player_hitbox_area_exited(area):
 	if area.get_name() == "Level_area":
-		#get_tree().change_scene_to_file("res://nivå1.tscn")
-		get_tree().get_current_scene()
+		print(get_tree().get_current_scene().get_name())
+		get_tree().reload_current_scene()

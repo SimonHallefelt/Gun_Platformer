@@ -42,6 +42,9 @@ func dead():
 		ANI.set_current_animation("enemy_dead")
 
 
+func damage(damage):
+	hp -= damage
+
 func _on_enemy_1_hitbox_area_entered(area):
 	pass
 

@@ -72,6 +72,7 @@ _data = {
 size = Vector2(112, 114)
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0apgb")
 JUMP_VELOCITY = -850.0

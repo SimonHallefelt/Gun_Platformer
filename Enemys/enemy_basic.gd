@@ -33,25 +33,28 @@ func _physics_process(delta):
 
 
 func dead():
-	if ANI.get_current_animation() != "enemy_dead" and !is_dead:
+	if !is_dead:
 		print("dead, " + str(self.get_name()) + " : " + str(ANI.get_current_animation()) + " .")
 		is_dead = true
+		$CollisionShape2D.disabled = true
+		$enemy_1_hitbox.monitoring = false
+		$enemy_1_hitbox.monitorable = false
+		$vision.monitoring = false
+		$vision.monitorable = false
 		ANI.set_current_animation("enemy_dead")
 
 
 func _on_enemy_1_hitbox_area_entered(area):
-	if !dead:
-		if area.get_name() == "bullet":
-			print("hit by " + str(area.get_name()))
-			area.queue_free()
+	if area.get_name() == "bullet":
+		print("hit by " + str(area.get_name()))
+		area.queue_free()
 
 func _on_enemy_1_hitbox_area_exited(area):
 	pass
 
 func _on_vision_area_entered(area):
-	if !dead:
-		if area.get_name() == "player_hitbox":
-			print("can se " + area.get_name())
+	if area.get_name() == "player_hitbox":
+		print("can se " + area.get_name())
 
 
 func _on_enemy_1_hitbox_body_entered(body):

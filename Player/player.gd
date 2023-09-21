@@ -8,11 +8,10 @@ var direction
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 
-#shoot
+#weapon
 var current_weapon
-var Bullet
-var look = 1
-var can_shoot = true
+var bullet = "standard"
+var looking = 1
 
 #life
 var is_dead = false
@@ -26,23 +25,22 @@ func _ready():
 	#start animation
 	ANI.set_current_animation("idel")
 	#start weapon
-	set_weapon("res://Weapons/Automatic/weapon_automatic.tscn")
+	set_weapon("res://Weapons/Automatic/standard_automatic.tscn")
 
 func _physics_process(delta):
-	# Add the gravity.
+	#Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle Jump.
+	#Handle Jump.
 	if Input.is_action_pressed("up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	#Handle left to rigth movment
 	direction = Input.get_axis("vänster", "höger")
 	if Input.is_action_pressed("vänster") || Input.is_action_pressed("höger"):
 		if direction != 0:
-			look = direction
+			looking = direction
 	if direction:
 		if Input.is_action_pressed("spring"):
 			velocity.x = direction * spring_SPEED
@@ -50,14 +48,14 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
 	move_and_slide()
 	
+	#shoot
 	if Input.is_action_pressed("skjut"):
-		shoot(look)
+		shoot(looking)
 
 func shoot(direction):
-	current_weapon.shoot(direction, "standard")
+	current_weapon.shoot(direction, bullet, self.get_groups())
 
 func set_weapon(weapon):
 	current_weapon = load(weapon).instantiate()

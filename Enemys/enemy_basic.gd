@@ -14,9 +14,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var is_dead = false
 @export var hp = 10
 
+#weapon
+var current_weapon
+var bullet = "standard"
+var looking = 1
+
 func _ready():
 	#start animation
 	ANI.set_current_animation("enemy_idel")
+	#start weapon
+	set_weapon("res://Weapons/Gun/standard_gun.tscn")
 
 func _physics_process(delta):
 	#dead
@@ -41,9 +48,19 @@ func dead():
 		$vision.monitorable = false
 		ANI.set_current_animation("enemy_dead")
 
-
 func damage(damage):
 	hp -= damage
+
+func shoot():
+	current_weapon.shoot(looking, bullet, self.get_groups())
+
+func set_weapon(weapon):
+	current_weapon = load(weapon).instantiate()
+	add_child(current_weapon)
+	var p = position
+	p.y = 0 - 32
+	p.x = 0
+	current_weapon.setPos(p)
 
 func _on_enemy_1_hitbox_area_entered(area):
 	pass
@@ -52,8 +69,12 @@ func _on_enemy_1_hitbox_area_exited(area):
 	pass
 
 func _on_vision_area_entered(area):
-	if area.get_name() == "player_hitbox":
+	if area.is_in_group("Player_group"):
 		print("can se " + area.get_name())
+		looking = 1
+		if self.position > area.get_parent().position:
+			looking = -1
+		shoot()
 
 
 func _on_enemy_1_hitbox_body_entered(body):

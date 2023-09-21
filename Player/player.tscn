@@ -71,13 +71,13 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ngu3"]
 size = Vector2(112, 114)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player_group"]]
 z_index = 1
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_0apgb")
 JUMP_VELOCITY = -850.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Player_group"]]
 position = Vector2(0, -57)
 shape = SubResource("RectangleShape2D_6h7h0")
 
@@ -92,7 +92,7 @@ libraries = {
 "": SubResource("AnimationLibrary_oiq2d")
 }
 
-[node name="player_hitbox" type="Area2D" parent="."]
+[node name="player_hitbox" type="Area2D" parent="." groups=["Player_group"]]
 visible = false
 position = Vector2(0, -58)
 

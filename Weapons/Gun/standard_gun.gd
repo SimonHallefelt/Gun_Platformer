@@ -1,6 +1,6 @@
 extends Node2D
 
-var standard_bullet = load("res://Weapons/Gun/standard_bullet.tscn")
+var standard_bullet = load("res://Weapons/Gun/standard_bullet_gun.tscn")
 var speed = 800
 var direction = 1
 var base_damage = 2
@@ -15,7 +15,7 @@ func shoot(dir, bullet_typ, my_self):
 		else:
 			bullet = standard_bullet.instantiate()
 		self.get_parent().get_parent().add_child(bullet)
-		bullet.shoot(self.get_parent().position + position, dir, my_self, speed)
+		bullet.shoot(self.get_parent().position + position, dir, my_self, speed, base_damage)
 		can_shoot = false
 		$Timer.start()
 

@@ -19,6 +19,10 @@ var current_weapon
 var bullet = "standard"
 var looking = 1
 
+#combat
+var se_player = false
+
+
 func _ready():
 	#start animation
 	ANI.set_current_animation("enemy_idel")
@@ -30,6 +34,10 @@ func _physics_process(delta):
 	if hp <= 0:
 		dead()
 		return
+	
+	#combat
+	if se_player:
+		shoot()
 	
 	#movment
 	if not is_on_floor():
@@ -76,7 +84,8 @@ func _on_vision_area_entered(area):
 		looking = 1
 		if self.position > area.get_parent().position:
 			looking = -1
-		shoot()
+		se_player = true
 
-func _on_enemy_1_hitbox_body_entered(body):
-	pass # Replace with function body.
+func _on_vision_area_exited(area):
+	if area.is_in_group("Player_group"):
+		se_player = false

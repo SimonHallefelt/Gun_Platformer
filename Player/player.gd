@@ -1,8 +1,6 @@
 extends CharacterBody2D
 class_name Player
 
-#signals
-#signal death()
 
 #move
 const SPEED = 300.0
@@ -19,7 +17,8 @@ var looking = 1
 
 #life
 var is_dead = false
-@export var hp = 10
+@export var max_hp = 10
+var hp = max_hp
 
 #animation
 @onready var ANI = get_node("AnimationPlayer")
@@ -30,6 +29,8 @@ func _ready():
 	ANI.set_current_animation("idel")
 	#start weapon
 	set_weapon("res://Weapons/Automatic/standard_automatic.tscn")
+	#set hp_bar
+	worldSignals.emit_signal("player_health", hp, max_hp)
 
 func _physics_process(delta):
 	if is_dead:
@@ -81,6 +82,7 @@ func set_weapon(weapon):
 
 func damage(damage):
 	hp -= damage
+	worldSignals.emit_signal("player_health", hp, max_hp)
 	if hp <= 0:
 		dead()
 

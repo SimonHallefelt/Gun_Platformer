@@ -1,14 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://0tfhxuu7vmuc"]
+[gd_scene load_steps=3 format=3 uid="uid://0tfhxuu7vmuc"]
 
 [ext_resource type="PackedScene" uid="uid://klaibhxdeflk" path="res://Player/player.tscn" id="1_ggv5i"]
 [ext_resource type="PackedScene" uid="uid://b07gkadxxcg0o" path="res://Levels/nivå1_design.tscn" id="2_y3xrc"]
-[ext_resource type="PackedScene" uid="uid://kpyha0p6yg3k" path="res://player_ui.tscn" id="3_53883"]
 
 [node name="nivå1" type="Node2D"]
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_ggv5i")]
-position = Vector2(113, 403)
+position = Vector2(120, 452)
 
 [node name="nivå1_design" parent="." instance=ExtResource("2_y3xrc")]
-
-[node name="player_UI" parent="." instance=ExtResource("3_53883")]

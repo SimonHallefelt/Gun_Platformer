@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://klaibhxdeflk"]
+[gd_scene load_steps=9 format=3 uid="uid://klaibhxdeflk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0apgb"]
 [ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="1_h6vq7"]
+[ext_resource type="PackedScene" uid="uid://fti3ugrjvkkh" path="res://Player/player_ui.tscn" id="3_a6ltf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h7h0"]
 size = Vector2(112, 114)
@@ -99,6 +100,8 @@ position = Vector2(0, -58)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 shape = SubResource("RectangleShape2D_5ngu3")
+
+[node name="player_UI" parent="." instance=ExtResource("3_a6ltf")]
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="area_exited" from="player_hitbox" to="." method="_on_player_hitbox_area_exited"]

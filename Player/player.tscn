@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://klaibhxdeflk"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_0apgb"]
-[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="1_h6vq7"]
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://Assets/icon.svg" id="2_0c60e"]
 [ext_resource type="PackedScene" uid="uid://fti3ugrjvkkh" path="res://Player/player_ui.tscn" id="3_a6ltf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h7h0"]
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_h6vq7")]
+"values": [ExtResource("2_0c60e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -48,7 +48,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("1_h6vq7"), ExtResource("1_h6vq7"), ExtResource("1_h6vq7")]
+"values": [ExtResource("2_0c60e"), ExtResource("2_0c60e"), ExtResource("2_0c60e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -83,7 +83,7 @@ position = Vector2(0, -57)
 shape = SubResource("RectangleShape2D_6h7h0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h6vq7")
+texture = ExtResource("2_0c60e")
 offset = Vector2(0, -64)
 
 [node name="Camera2D" type="Camera2D" parent="."]

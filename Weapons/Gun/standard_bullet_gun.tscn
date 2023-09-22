@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bickdg71nupta"]
 
-[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="1_u5mld"]
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://Assets/icon.svg" id="1_u5mld"]
 
 [sub_resource type="GDScript" id="GDScript_6ih20"]
 script/source = "extends abstract_bullets

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b07gkadxxcg0o"]
+[gd_scene load_steps=5 format=3 uid="uid://b07gkadxxcg0o"]
 
-[ext_resource type="PackedScene" uid="uid://b7kxv5hnt1k7p" path="res://tile_map_1.tscn" id="1_uvqif"]
+[ext_resource type="PackedScene" uid="uid://b7kxv5hnt1k7p" path="res://Assets/tile_map_1.tscn" id="1_uvqif"]
 [ext_resource type="PackedScene" uid="uid://bhuuq6rx2deim" path="res://Enemys/enemy_basic.tscn" id="2_5a4gs"]
+[ext_resource type="PackedScene" uid="uid://dcajrjx21cd5b" path="res://screen_particle_effect_1.tscn" id="3_jcsh2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yp46n"]
 size = Vector2(3680, 1095)
@@ -22,9 +23,14 @@ scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_yp46n")
 
 [node name="Enemys" type="Node2D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="Enemy_1" parent="Enemys" instance=ExtResource("2_5a4gs")]
 position = Vector2(1624, 247)
 
 [node name="Enemy_2" parent="Enemys" instance=ExtResource("2_5a4gs")]
 position = Vector2(-114, 332)
+
+[node name="screen_partical_effect_1" parent="." instance=ExtResource("3_jcsh2")]
+position = Vector2(-1500, 300)
+metadata/_edit_group_ = true

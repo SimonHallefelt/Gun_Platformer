@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bhuuq6rx2deim"]
 
 [ext_resource type="Script" path="res://Enemys/enemy_basic.gd" id="1_pqrwr"]
-[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://icon.svg" id="2_io6jc"]
+[ext_resource type="Texture2D" uid="uid://ygurearppnbw" path="res://Assets/icon.svg" id="2_pdlfk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8i2py"]
 size = Vector2(112, 114)
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_io6jc")]
+"values": [ExtResource("2_pdlfk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -46,7 +46,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_io6jc"), ExtResource("2_io6jc")]
+"values": [ExtResource("2_pdlfk"), ExtResource("2_pdlfk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -75,7 +75,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [ExtResource("2_io6jc"), ExtResource("2_io6jc"), ExtResource("2_io6jc")]
+"values": [ExtResource("2_pdlfk"), ExtResource("2_pdlfk"), ExtResource("2_pdlfk")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -117,7 +117,7 @@ shape = SubResource("RectangleShape2D_8i2py")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0.713726, 0, 0.654902, 1)
-texture = ExtResource("2_io6jc")
+texture = ExtResource("2_pdlfk")
 offset = Vector2(0, -64)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

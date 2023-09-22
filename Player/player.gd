@@ -52,6 +52,7 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
+	worldSignals.emit_signal("player_position", position)
 	move_and_slide()
 	
 	#shoot

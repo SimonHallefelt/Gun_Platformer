@@ -35,14 +35,9 @@ func _physics_process(delta):
 	if is_dead:
 		return
 	
-	#Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
-	#Handle Jump.
-	if Input.is_action_pressed("up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
+	#jump and gravity
+	jump(delta)
+	
 	#Handle left to rigth movment
 	direction = Input.get_axis("vänster", "höger")
 	if Input.is_action_pressed("vänster") || Input.is_action_pressed("höger"):
@@ -61,6 +56,21 @@ func _physics_process(delta):
 	#shoot
 	if Input.is_action_pressed("skjut"):
 		shoot(looking)
+
+func jump(delta):
+	#Add the gravity.
+	#if not is_on_floor():
+	#	velocity.y += gravity * delta
+
+	#Handle Jump.
+	if Input.is_action_pressed("up") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_pressed("up") and velocity.y < -20:
+		velocity.y += gravity * delta
+	elif velocity.y < -2:
+		velocity.y += gravity * delta * log(-velocity.y/(log(-velocity.y)*1.5))
+	else:
+		velocity.y += gravity * delta
 
 func shoot(direction):
 	current_weapon.shoot(direction, bullet, self.get_groups())

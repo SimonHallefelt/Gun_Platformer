@@ -86,6 +86,7 @@ texture = ExtResource("1_h6vq7")
 offset = Vector2(0, -64)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_speed = 100.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

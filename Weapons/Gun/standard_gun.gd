@@ -1,10 +1,11 @@
-extends Node2D
+extends abstract_weapons
 
 var standard_bullet = load("res://Weapons/Gun/standard_bullet_gun.tscn")
 var speed = 800
 var direction = 1
 var base_damage = 2
 var can_shoot = true
+var pos
 
 func shoot(dir, bullet_typ, my_self):
 	if can_shoot:
@@ -15,12 +16,12 @@ func shoot(dir, bullet_typ, my_self):
 		else:
 			bullet = standard_bullet.instantiate()
 		self.get_parent().get_parent().add_child(bullet)
-		bullet.shoot(self.get_parent().position + position, dir, my_self, speed, base_damage)
+		bullet.shoot(self.get_parent().position + pos, dir, my_self, speed, base_damage)
 		can_shoot = false
 		$Timer.start()
 
 func setPos(pos):
-	position = pos
+	super(pos)
 
 func _on_timer_timeout():
 	can_shoot = true

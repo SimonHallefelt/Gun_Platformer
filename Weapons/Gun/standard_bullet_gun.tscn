@@ -16,13 +16,14 @@ func _process(delta):
 	velocity.x += direction * speed
 	position += velocity * delta
 
+
 #super
 func shoot(pos, dir, my_self, speed, base_damage):
 	super(pos, dir, my_self, speed, base_damage)
 
 func area_was_entered(area, my_self, base_damage):
 	super(area, my_self, base_damage)
-	
+
 
 #signals
 func _on_area_entered(area):

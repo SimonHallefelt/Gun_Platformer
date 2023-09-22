@@ -12,7 +12,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #life
 var is_dead = false
-@export var hp = 10
+@export var max_hp = 10
+var hp = max_hp
+
+#hp_bar
+@onready var hpBar = $ui/hp_bar
+var color_green = Color(0, 1, 0.1176, 1) #00ff1e
+var color_yellow = Color(0.9, 0.9, 0, 1)
+var color_red = Color(1, 0, 0, 1)
 
 #weapon
 var current_weapon
@@ -28,6 +35,9 @@ func _ready():
 	ANI.set_current_animation("enemy_idel")
 	#start weapon
 	set_weapon("res://Weapons/Gun/standard_gun.tscn")
+	#hp_bar
+	hpBar.max_value = max_hp
+	hpBar.value = max_hp
 
 func _physics_process(delta):
 	#dead
@@ -54,10 +64,18 @@ func dead():
 		$enemy_1_hitbox.monitorable = false
 		$vision.monitoring = false
 		$vision.monitorable = false
+		$ui.visible = false
 		ANI.set_current_animation("enemy_dead")
 
 func damage(damage):
 	hp -= damage
+	hpBar.value = hp
+	if hp > max_hp * 0.7:
+		hpBar.tint_progress = color_green
+	elif hp > max_hp * 0.3:
+		hpBar.tint_progress = color_yellow
+	else:
+		hpBar.tint_progress = color_red
 
 func shoot():
 	current_weapon.shoot(looking, bullet, self.get_groups())

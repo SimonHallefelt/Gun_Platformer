@@ -1,4 +1,8 @@
 extends CharacterBody2D
+class_name Player
+
+#signals
+#signal death()
 
 #move
 const SPEED = 300.0
@@ -28,6 +32,9 @@ func _ready():
 	set_weapon("res://Weapons/Automatic/standard_automatic.tscn")
 
 func _physics_process(delta):
+	if is_dead:
+		return
+	
 	#Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -48,6 +55,7 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED 
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 	move_and_slide()
 	
 	#shoot
@@ -72,7 +80,8 @@ func damage(damage):
 
 func dead():
 	print("player dead")
-	get_tree().reload_current_scene()
+	is_dead = true
+	worldSignals.emit_signal("player_death")
 
 
 #signals
@@ -81,5 +90,5 @@ func _on_player_hitbox_area_entered(area):
 
 func _on_player_hitbox_area_exited(area):
 	if area.get_name() == "Level_area":
-		print(get_tree().get_current_scene().get_name())
-		get_tree().reload_current_scene()
+		print("player left Level_area")
+		dead()

@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://kpyha0p6yg3k"]
+
+[ext_resource type="Script" path="res://player_UI.gd" id="1_1lglw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lkmn7"]
+font_size = 128
+font_color = Color(1, 0.00999999, 0.00999999, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_cdfj1"]
+
+[node name="player_UI" type="CanvasLayer"]
+script = ExtResource("1_1lglw")
+
+[node name="death" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="ColorRect" type="ColorRect" parent="death"]
+self_modulate = Color(0, 0, 0, 0.25098)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="death"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="death/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="death/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "DEAD"
+label_settings = SubResource("LabelSettings_lkmn7")
+
+[node name="Label2" type="Label" parent="death/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PRESS ENTER TO RESTART
+"
+label_settings = SubResource("LabelSettings_cdfj1")

@@ -7,6 +7,7 @@
 script = ExtResource("1_xuhr3")
 
 [node name="screen_particle_effect_1" parent="." instance=ExtResource("2_jrd61")]
+position = Vector2(0, 500)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

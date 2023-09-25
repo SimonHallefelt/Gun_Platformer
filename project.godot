@@ -18,6 +18,8 @@ config/icon="res://Assets/icon.svg"
 [autoload]
 
 worldSignals="*res://WorldScripts/worldSignals.gd"
+worldScenes="*res://WorldScripts/worldScenes.gd"
+worldScript="*res://WorldScripts/worldScript.gd"
 
 [input]
 

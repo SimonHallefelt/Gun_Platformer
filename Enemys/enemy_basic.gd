@@ -34,7 +34,7 @@ func _ready():
 	#start animation
 	ANI.set_current_animation("enemy_idel")
 	#start weapon
-	set_weapon("res://Weapons/Gun/standard_gun.tscn")
+	set_weapon(worldScenes.standard_gun)
 	#hp_bar
 	hpBar.max_value = max_hp
 	hpBar.value = max_hp

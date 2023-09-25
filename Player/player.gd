@@ -28,7 +28,7 @@ func _ready():
 	#start animation
 	ANI.set_current_animation("idel")
 	#start weapon
-	set_weapon("res://Weapons/Automatic/standard_automatic.tscn")
+	set_weapon(worldScenes.standard_automatic)
 	#set hp_bar
 	worldSignals.emit_signal("player_health", hp, max_hp)
 

@@ -1,6 +1,6 @@
 extends abstract_weapons
 
-var standard_bullet = load("res://Weapons/Gun/standard_bullet_gun.tscn")
+var standard_bullet = load(worldScenes.standard_bullet_gun)
 var speed = 800
 var direction = 1
 var base_damage = 2

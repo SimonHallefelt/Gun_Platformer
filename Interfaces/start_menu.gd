@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-var start_level = load("res://Levels/nivå1.tscn")
+var start_level = load(worldScenes.level_1)
 
 
 #buttens
